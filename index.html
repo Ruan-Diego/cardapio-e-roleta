@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A2F">
+<title>Shots &amp; Roleta · Festa da Bruna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #1E3A2F;
+    --ground-deep: #162C23;
+    --ground-soft: #2C5442;
+    --accent: #F4A3B1;
+    --accent-deep: #E07D90;
+    --ivory: #F4EFE6;
+    --muted: #D9D2C3;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Karla', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--ground);
+    color: var(--ivory);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body { position: relative; }
+  .frame {
+    position: absolute;
+    inset: 12px;
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 44px 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(52px, 15vw, 72px);
+    line-height: 1;
+  }
+  .tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ivory);
+    opacity: 0.35;
+  }
+  .divider h2 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ---------- views ---------- */
+  .view { display: none; flex-direction: column; gap: 28px; }
+  .view.active { display: flex; }
+
+  /* ---------- home ---------- */
+  .choices { display: flex; flex-direction: column; gap: 16px; }
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .choice:active { transform: scale(0.98); }
+  .choice small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .choice svg { flex: none; }
+  .choice.primary { background: var(--accent); color: var(--ground-deep); }
+  .choice.primary small { color: #4A2A31; }
+  .choice.primary:hover { background: #F7B6C1; }
+  .choice.secondary { border: 1.5px solid var(--accent); color: var(--ivory); }
+  .choice.secondary small { color: var(--muted); }
+  .choice.secondary:hover { background: rgba(244,163,177,0.08); }
+  .rules {
+    margin: 0;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .back {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 4px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .back:hover { color: #F8C4CD; }
+
+  /* ---------- cardápio ---------- */
+  .menu { display: flex; flex-direction: column; gap: 26px; }
+  .shot { display: flex; flex-direction: column; gap: 4px; }
+  .shot-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .shot h3 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 26px; }
+  .shot p { margin: 0; font-size: 16px; line-height: 1.4; color: var(--muted); }
+  .level {
+    flex: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .heat { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: 1px; }
+  .heat i { width: 7px; height: 7px; border-radius: 50%; border: 1.2px solid var(--accent); }
+  .heat i.on { background: var(--accent); }
+
+  /* ---------- roleta ---------- */
+  .wheel-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 8px auto 0;
+    aspect-ratio: 1;
+  }
+  .wheel-btn {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .wheel-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
+  #wheel {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: rotate(0deg);
+    will-change: transform;
+  }
+  .pointer {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 48px;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,0.35));
+  }
+  .spin {
+    align-self: center;
+    min-height: 56px;
+    padding: 0 40px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--ground-deep);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, opacity 0.2s ease;
+  }
+  .spin:hover { background: #F7B6C1; }
+  .spin:active { transform: scale(0.97); }
+  .spin:disabled { opacity: 0.5; cursor: default; }
+  .spin:focus-visible { outline: 3px solid var(--ivory); outline-offset: 4px; }
+
+  .result {
+    min-height: 132px;
+    padding: 22px 20px;
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .result .label {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .result .title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 34px;
+    line-height: 1.1;
+  }
+  .result .desc { font-size: 16px; color: var(--muted); line-height: 1.4; }
+  .result.idle .title { font-size: 22px; font-style: italic; font-weight: 400; color: var(--muted); }
+  .result.pop { animation: pop 0.45s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes pop {
+    0% { transform: scale(0.9); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  footer {
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+  }
+
+  @media (max-width: 380px) {
+    main { padding: 36px 24px 40px; }
+    .choice { font-size: 23px; padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="frame" aria-hidden="true"></div>
+<main>
+  <header>
+    <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4A3B1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1.4 15.2a1 1 0 0 1-1 .8H9.4a1 1 0 0 1-1-.8z"></path><path d="M7.6 10h8.8"></path></svg>
+    <div class="kicker">Festa da Bruna</div>
+    <h1>Shots</h1>
+    <div class="tagline">noite de jogos, noite de prendas</div>
+  </header>
+
+  <!-- HOME -->
+  <section class="view" id="view-home" aria-label="Início">
+    <div class="choices">
+      <a class="choice primary" href="#roleta">
+        <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path><circle cx="12" cy="12" r="2.2" fill="currentColor"></circle></svg>
+        <span>Girar a roleta<small>Foi pego? Gire e descubra o castigo</small></span>
+      </a>
+      <a class="choice secondary" href="#cardapio">
+        <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4A3B1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1.4 15.2a1 1 0 0 1-1 .8H9.4a1 1 0 0 1-1-.8z"></path><path d="M7.6 10h8.8"></path></svg>
+        <span>Cardápio de shots<small>Conheça o que te espera</small></span>
+      </a>
+    </div>
+    <p class="rules">Algumas coisas que acontecerem hoje à noite vão te custar caro. Ninguém sabe quais são… até acontecer.</p>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section class="view" id="view-cardapio" aria-label="Cardápio de shots">
+    <a class="back" href="#">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      Voltar
+    </a>
+    <div class="divider"><h2>Cardápio de shots</h2></div>
+    <div class="menu">
+      <div class="shot">
+        <div class="shot-top">
+          <h3>Shot de Batida</h3>
+          <span class="level">Leve<span class="heat" aria-hidden="true"><i class="on"></i><i></i><i></i></span></span>
+        </div>
+        <p>Cachaça, morango e leite condensado</p>
+      </div>
+      <div class="shot">
+        <div class="shot-top">
+          <h3>Rabo de Galo</h3>
+          <span class="level">Médio<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span>
+        </div>
+        <p>Cachaça e Martini rosso</p>
+      </div>
+      <div class="shot">
+        <div class="shot-top">
+          <h3>Shot da Vergonha</h3>
+          <span class="level">Máximo<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
+        </div>
+        <p>Cachaça pura. Sem choro.</p>
+      </div>
+      <div class="shot">
+        <div class="shot-top">
+          <h3>Shot Amargo</h3>
+          <span class="level">Cruel</span>
+        </div>
+        <p>Água tônica pura. Sem álcool, sem piedade.</p>
+      </div>
+    </div>
+    <a class="choice primary" href="#roleta">
+      <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path><circle cx="12" cy="12" r="2.2" fill="currentColor"></circle></svg>
+      <span>Ir para a roleta</span>
+    </a>
+  </section>
+
+  <!-- ROLETA -->
+  <section class="view" id="view-roleta" aria-label="Roleta">
+    <a class="back" href="#">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      Voltar
+    </a>
+    <div class="divider"><h2>A roleta</h2></div>
+
+    <div class="wheel-wrap">
+      <svg class="pointer" viewBox="0 0 40 48" aria-hidden="true">
+        <path d="M20 46 L4 10 A16 16 0 0 1 36 10 Z" fill="#F4EFE6" stroke="#162C23" stroke-width="2"></path>
+        <circle cx="20" cy="14" r="5" fill="#E07D90"></circle>
+      </svg>
+      <button class="wheel-btn" id="wheelBtn" type="button" aria-label="Girar a roleta">
+        <svg id="wheel" viewBox="0 0 340 340" role="img" aria-label="Roleta com 10 castigos"></svg>
+      </button>
+    </div>
+
+    <button class="spin" id="spinBtn" type="button">Girar</button>
+
+    <div class="result idle" id="result" aria-live="polite">
+      <div class="label">Resultado</div>
+      <div class="title">Gire para descobrir seu destino</div>
+    </div>
+  </section>
+
+  <footer>Saúde, Bruna!</footer>
+</main>
+
+<script>
+  // ---------- Fatias da roleta (todas com a mesma chance) ----------
+  const SLICES = [
+    { short: 'Shot de Batida',   title: 'Shot de Batida',            desc: 'Cachaça, morango e leite condensado. Pelo menos é gostoso.' },
+    { short: 'Rabo de Galo',     title: 'Rabo de Galo',              desc: 'Cachaça com Martini rosso. Vira!' },
+    { short: 'Shot da Vergonha', title: 'Shot da Vergonha',          desc: 'Cachaça pura. Sem choro.' },
+    { short: 'Shot Amargo',      title: 'Shot Amargo',               desc: 'Água tônica pura. Sem álcool, sem piedade.' },
+    { short: 'Escolha alguém',   title: 'Escolha alguém para beber', desc: 'Aponte quem vai tomar um shot no seu lugar.' },
+    { short: 'Gire de novo',     title: 'Gire de novo',              desc: 'A roleta quer mais. Gire outra vez.' },
+    { short: 'Livre!',           title: 'Livre!',                    desc: 'Escapou desta vez. Aproveite.' },
+    { short: 'Brinde geral',     title: 'Brinde geral',              desc: 'Todo mundo levanta o copo e bebe junto.' },
+    { short: 'Homens bebem',     title: 'Homens bebem',              desc: 'Todos os homens da mesa tomam um shot.' },
+    { short: 'Mulheres bebem',   title: 'Mulheres bebem',            desc: 'Todas as mulheres da mesa tomam um shot.' }
+  ];
+
+  const N = SLICES.length;
+  const SEG = 360 / N;
+  const C = 170;         // centro
+  const R = 156;         // raio das fatias
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const COLORS = [
+    { fill: '#F4A3B1', text: '#162C23' },
+    { fill: '#2C5442', text: '#F4EFE6' }
+  ];
+
+  function pt(angleFromTop, r) {
+    const a = angleFromTop * Math.PI / 180;
+    return [C + r * Math.sin(a), C - r * Math.cos(a)];
+  }
+  function el(name, attrs, parent) {
+    const node = document.createElementNS(NS, name);
+    for (const k in attrs) node.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(node);
+    return node;
+  }
+
+  function buildWheel() {
+    const svg = document.getElementById('wheel');
+
+    // aro externo
+    el('circle', { cx: C, cy: C, r: 168, fill: '#162C23' }, svg);
+    el('circle', { cx: C, cy: C, r: 163, fill: 'none', stroke: '#F4A3B1', 'stroke-width': 2 }, svg);
+
+    // fatias
+    SLICES.forEach((s, i) => {
+      const a0 = i * SEG, a1 = (i + 1) * SEG;
+      const [x0, y0] = pt(a0, R);
+      const [x1, y1] = pt(a1, R);
+      const col = COLORS[i % 2];
+      el('path', {
+        d: `M${C},${C} L${x0},${y0} A${R},${R} 0 0 1 ${x1},${y1} Z`,
+        fill: col.fill,
+        stroke: '#162C23',
+        'stroke-width': 1.5
+      }, svg);
+
+      const mid = a0 + SEG / 2;
+      const g = el('g', { transform: `rotate(${mid - 90} ${C} ${C})` }, svg);
+      const t = el('text', {
+        x: C + R - 12,
+        y: C,
+        'text-anchor': 'end',
+        'dominant-baseline': 'central',
+        fill: col.text,
+        'font-family': 'Karla, system-ui, sans-serif',
+        'font-weight': 700,
+        'font-size': s.short.length >= 14 ? 12.5 : 14
+      }, g);
+      t.textContent = s.short;
+    });
+
+    // lâmpadas no aro
+    for (let i = 0; i < N * 2; i++) {
+      const [bx, by] = pt(i * SEG / 2, 163);
+      el('circle', {
+        cx: bx, cy: by, r: 3.6,
+        fill: i % 2 === 0 ? '#F4EFE6' : '#F4A3B1',
+        class: 'bulb'
+      }, svg);
+    }
+
+    // miolo
+    el('circle', { cx: C, cy: C, r: 28, fill: '#162C23', stroke: '#F4A3B1', 'stroke-width': 2 }, svg);
+    el('circle', { cx: C, cy: C, r: 20, fill: 'none', stroke: '#F4EFE6', 'stroke-width': 1, opacity: 0.4 }, svg);
+    const star = el('text', {
+      x: C, y: C + 1,
+      'text-anchor': 'middle',
+      'dominant-baseline': 'central',
+      fill: '#F4A3B1',
+      'font-family': 'Fraunces, Georgia, serif',
+      'font-style': 'italic',
+      'font-weight': 600,
+      'font-size': 19
+    }, svg);
+    star.textContent = 'B';
+  }
+
+  // ---------- giro ----------
+  const wheel = document.getElementById('wheel');
+  const spinBtn = document.getElementById('spinBtn');
+  const wheelBtn = document.getElementById('wheelBtn');
+  const result = document.getElementById('result');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let rotation = 0;
+  let spinning = false;
+
+  function randomIndex() {
+    if (window.crypto && crypto.getRandomValues) {
+      const buf = new Uint32Array(1);
+      const limit = Math.floor(0xFFFFFFFF / N) * N;
+      do { crypto.getRandomValues(buf); } while (buf[0] >= limit);
+      return buf[0] % N;
+    }
+    return Math.floor(Math.random() * N);
+  }
+
+  function spin() {
+    if (spinning) return;
+    spinning = true;
+    spinBtn.disabled = true;
+    result.className = 'result idle';
+    result.innerHTML = '<div class="label">Girando…</div><div class="title">Que a sorte esteja com você</div>';
+
+    const idx = randomIndex();
+    const center = idx * SEG + SEG / 2;
+    const jitter = (Math.random() - 0.5) * (SEG * 0.7);
+    const target = (360 - center + jitter + 360) % 360;
+    const current = ((rotation % 360) + 360) % 360;
+    let delta = target - current;
+    if (delta < 0) delta += 360;
+    const turns = reduceMotion ? 1 : 6;
+    rotation += turns * 360 + delta;
+
+    const duration = reduceMotion ? 1200 : 5200;
+    wheel.style.transition = `transform ${duration}ms cubic-bezier(0.12, 0.8, 0.18, 1)`;
+    wheel.style.transform = `rotate(${rotation}deg)`;
+
+    setTimeout(() => showResult(idx), duration + 80);
+  }
+
+  function showResult(idx) {
+    const s = SLICES[idx];
+    result.className = 'result';
+    void result.offsetWidth;
+    result.className = 'result pop';
+    result.innerHTML =
+      '<div class="label">Resultado</div>' +
+      '<div class="title"></div>' +
+      '<div class="desc"></div>';
+    result.querySelector('.title').textContent = s.title;
+    result.querySelector('.desc').textContent = s.desc;
+    if (navigator.vibrate) navigator.vibrate([60, 40, 120]);
+    spinning = false;
+    spinBtn.disabled = false;
+    spinBtn.textContent = 'Girar de novo';
+  }
+
+  spinBtn.addEventListener('click', spin);
+  wheelBtn.addEventListener('click', spin);
+
+  // ---------- navegação ----------
+  function route() {
+    const h = location.hash.replace('#', '');
+    const name = h === 'roleta' || h === 'cardapio' ? h : 'home';
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+
+  buildWheel();
+  route();
+</script>
+</body>
+</html>
