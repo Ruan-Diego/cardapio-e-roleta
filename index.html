@@ -160,7 +160,7 @@
   .back:hover { color: #F8C4CD; }
 
   /* ---------- cardápio ---------- */
-  .menu { display: flex; flex-direction: column; gap: 26px; }
+  .menu { display: flex; flex-direction: column; gap: 36px; }
   .shot { display: flex; flex-direction: column; gap: 4px; }
   .shot-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .shot h3 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 26px; }
@@ -176,6 +176,33 @@
   .heat { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: 1px; }
   .heat i { width: 7px; height: 7px; border-radius: 50%; border: 1.2px solid var(--accent); }
   .heat i.on { background: var(--accent); }
+
+  .level-group { display: flex; flex-direction: column; gap: 18px; }
+  .level-head { display: flex; align-items: center; gap: 10px; }
+  .level-title {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .menu-link {
+    align-self: center;
+    margin-top: 8px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .menu-link:hover { background: rgba(244,163,177,0.1); }
 
   /* ---------- roleta ---------- */
   .wheel-wrap {
@@ -312,62 +339,50 @@
     </a>
     <div class="divider"><h2>Cardápio de shots</h2></div>
     <div class="menu">
+    <div class="level-group">
+      <div class="level-head"><h3 class="level-title">Nível Leve</h3><span class="heat" aria-hidden="true"><i class="on"></i><i></i><i></i></span></div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot de Batida</h3>
-          <span class="level">Leve<span class="heat" aria-hidden="true"><i class="on"></i><i></i><i></i></span></span>
-        </div>
+        <h3>Shot de Batida</h3>
         <p>Cachaça, morango e leite condensado</p>
       </div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot de Martini</h3>
-          <span class="level">Leve<span class="heat" aria-hidden="true"><i class="on"></i><i></i><i></i></span></span>
-        </div>
+        <h3>Shot de Martini</h3>
         <p>Martini rosso puro</p>
       </div>
+    </div>
+    <div class="level-group">
+      <div class="level-head"><h3 class="level-title">Nível Médio</h3><span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Rabo de Galo</h3>
-          <span class="level">Médio<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span>
-        </div>
+        <h3>Rabo de Galo</h3>
         <p>Cachaça e Martini rosso</p>
       </div>
+    </div>
+    <div class="level-group">
+      <div class="level-head"><h3 class="level-title">Nível Máximo</h3><span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot da Vergonha</h3>
-          <span class="level">Máximo<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
-        </div>
-        <p>Cachaça pura. Sem choro.</p>
+        <h3>Shot de Cachaça</h3>
+        <p>Cachaça pura</p>
       </div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot de Vodka</h3>
-          <span class="level">Máximo<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
-        </div>
+        <h3>Shot de Vodka</h3>
         <p>Vodka pura</p>
       </div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot de Uísque</h3>
-          <span class="level">Máximo<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
-        </div>
+        <h3>Shot de Uísque</h3>
         <p>Uísque puro</p>
       </div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot de Rum</h3>
-          <span class="level">Máximo<span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span>
-        </div>
+        <h3>Shot de Rum</h3>
         <p>Rum puro</p>
       </div>
+    </div>
+    <div class="level-group">
+      <div class="level-head"><h3 class="level-title">Café com Leite</h3></div>
       <div class="shot">
-        <div class="shot-top">
-          <h3>Shot Amargo</h3>
-          <span class="level">Cruel</span>
-        </div>
-        <p>Água tônica pura. Sem álcool, sem piedade.</p>
+        <h3>Shot da Vergonha</h3>
+        <p>Não aguentou? Água tônica pura. E todo mundo vai saber.</p>
       </div>
+    </div>
     </div>
     <a class="choice primary" href="#roleta">
       <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path><circle cx="12" cy="12" r="2.2" fill="currentColor"></circle></svg>
@@ -389,7 +404,7 @@
         <circle cx="20" cy="14" r="5" fill="#E07D90"></circle>
       </svg>
       <button class="wheel-btn" id="wheelBtn" type="button" aria-label="Girar a roleta">
-        <svg id="wheel" viewBox="0 0 340 340" role="img" aria-label="Roleta com 10 castigos"></svg>
+        <svg id="wheel" viewBox="0 0 340 340" role="img" aria-label="Roleta com 9 castigos"></svg>
       </button>
     </div>
 
@@ -407,16 +422,15 @@
 <script>
   // ---------- Fatias da roleta (todas com a mesma chance) ----------
   const SLICES = [
-    { short: 'Shot de Batida',   title: 'Shot de Batida',            desc: 'Cachaça, morango e leite condensado. Pelo menos é gostoso.' },
-    { short: 'Rabo de Galo',     title: 'Rabo de Galo',              desc: 'Cachaça com Martini rosso. Vira!' },
-    { short: 'Shot da Vergonha', title: 'Shot da Vergonha',          desc: 'Cachaça pura. Sem choro.' },
-    { short: 'Shot Amargo',      title: 'Shot Amargo',               desc: 'Água tônica pura. Sem álcool, sem piedade.' },
-    { short: 'Escolha alguém',   title: 'Escolha alguém para beber', desc: 'Aponte quem vai tomar um shot no seu lugar.' },
-    { short: 'Gire de novo',     title: 'Gire de novo',              desc: 'A roleta quer mais. Gire outra vez.' },
-    { short: 'Livre!',           title: 'Livre!',                    desc: 'Escapou desta vez. Aproveite.' },
-    { short: 'Brinde geral',     title: 'Brinde geral',              desc: 'Todo mundo levanta o copo e bebe junto.' },
-    { short: 'Homens bebem',     title: 'Homens bebem',              desc: 'Todos os homens da mesa tomam um shot.' },
-    { short: 'Mulheres bebem',   title: 'Mulheres bebem',            desc: 'Todas as mulheres da mesa tomam um shot.' }
+    { short: 'Nível Leve',     title: 'Nível Leve',                desc: 'Escolha um shot do nível leve no cardápio.', menu: true },
+    { short: 'Homens bebem',   title: 'Homens bebem',              desc: 'Todos os homens da mesa tomam um shot.' },
+    { short: 'Livre!',         title: 'Livre!',                    desc: 'Escapou desta vez. Aproveite.' },
+    { short: 'Nível Médio',    title: 'Nível Médio',               desc: 'Escolha um shot do nível médio no cardápio.', menu: true },
+    { short: 'Escolha alguém', title: 'Escolha alguém para beber', desc: 'Aponte quem vai tomar um shot no seu lugar.' },
+    { short: 'Brinde geral',   title: 'Brinde geral',              desc: 'Todo mundo levanta o copo e bebe junto.' },
+    { short: 'Nível Máximo',   title: 'Nível Máximo',              desc: 'Escolha um shot do nível máximo no cardápio. Sem choro.', menu: true },
+    { short: 'Mulheres bebem', title: 'Mulheres bebem',            desc: 'Todas as mulheres da mesa tomam um shot.' },
+    { short: 'Gire de novo',   title: 'Gire de novo',              desc: 'A roleta quer mais. Gire outra vez.' }
   ];
 
   const N = SLICES.length;
@@ -427,7 +441,8 @@
 
   const COLORS = [
     { fill: '#F4A3B1', text: '#162C23' },
-    { fill: '#2C5442', text: '#F4EFE6' }
+    { fill: '#2C5442', text: '#F4EFE6' },
+    { fill: '#F4EFE6', text: '#162C23' }
   ];
 
   function pt(angleFromTop, r) {
@@ -453,7 +468,7 @@
       const a0 = i * SEG, a1 = (i + 1) * SEG;
       const [x0, y0] = pt(a0, R);
       const [x1, y1] = pt(a1, R);
-      const col = COLORS[i % 2];
+      const col = COLORS[i % 3];
       el('path', {
         d: `M${C},${C} L${x0},${y0} A${R},${R} 0 0 1 ${x1},${y1} Z`,
         fill: col.fill,
@@ -556,6 +571,13 @@
       '<div class="desc"></div>';
     result.querySelector('.title').textContent = s.title;
     result.querySelector('.desc').textContent = s.desc;
+    if (s.menu) {
+      const a = document.createElement('a');
+      a.href = '#cardapio';
+      a.className = 'menu-link';
+      a.textContent = 'Abrir o cardápio';
+      result.appendChild(a);
+    }
     if (navigator.vibrate) navigator.vibrate([60, 40, 120]);
     spinning = false;
     spinBtn.disabled = false;
