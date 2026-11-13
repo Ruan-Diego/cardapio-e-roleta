@@ -2,19 +2,19 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1E3A2F">
-<title>Shots &amp; Roleta · Bruna Fest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#3B2466">
+<title>Roleta · Janine 1/4 de vida</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ground: #1E3A2F;
-    --ground-deep: #162C23;
-    --ground-soft: #2C5442;
-    --accent: #F4A3B1;
-    --accent-deep: #E07D90;
+    --ground: #3B2466;
+    --ground-deep: #2A1849;
+    --ground-soft: #5A3C91;
+    --accent: #C9A7F5;
+    --accent-deep: #A57BE6;
     --ivory: #F4EFE6;
     --muted: #D9D2C3;
     --serif: 'Fraunces', Georgia, serif;
@@ -128,11 +128,11 @@
   }
   .choice svg { flex: none; }
   .choice.primary { background: var(--accent); color: var(--ground-deep); }
-  .choice.primary small { color: #4A2A31; }
-  .choice.primary:hover { background: #F7B6C1; }
+  .choice.primary small { color: #3B2466; }
+  .choice.primary:hover { background: #D8C0FA; }
   .choice.secondary { border: 1.5px solid var(--accent); color: var(--ivory); }
   .choice.secondary small { color: var(--muted); }
-  .choice.secondary:hover { background: rgba(244,163,177,0.08); }
+  .choice.secondary:hover { background: rgba(201,167,245,0.08); }
   .rules {
     margin: 0;
     text-align: center;
@@ -157,7 +157,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .back:hover { color: #F8C4CD; }
+  .back:hover { color: #E2D0FC; }
 
   /* ---------- cardápio ---------- */
   .menu { display: flex; flex-direction: column; gap: 36px; }
@@ -202,7 +202,7 @@
     font-weight: 700;
     font-size: 15px;
   }
-  .menu-link:hover { background: rgba(244,163,177,0.1); }
+  .menu-link:hover { background: rgba(201,167,245,0.1); }
 
   /* ---------- roleta ---------- */
   .wheel-wrap {
@@ -254,7 +254,7 @@
     cursor: pointer;
     transition: transform 0.15s ease, background 0.15s ease, opacity 0.2s ease;
   }
-  .spin:hover { background: #F7B6C1; }
+  .spin:hover { background: #D8C0FA; }
   .spin:active { transform: scale(0.97); }
   .spin:disabled { opacity: 0.5; cursor: default; }
   .spin:focus-visible { outline: 3px solid var(--ivory); outline-offset: 4px; }
@@ -310,101 +310,20 @@
 <div class="frame" aria-hidden="true"></div>
 <main>
   <header>
-    <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4A3B1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1.4 15.2a1 1 0 0 1-1 .8H9.4a1 1 0 0 1-1-.8z"></path><path d="M7.6 10h8.8"></path></svg>
-    <div class="kicker">Bruna Fest</div>
-    <h1>Shots</h1>
-    <div class="tagline">noite de jogos, noite de prendas</div>
+    <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A7F5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v9h9"></path></svg>
+    <div class="kicker">Janine · 1/4 de vida</div>
+    <h1>Roleta</h1>
+    <div class="tagline">errou? a roleta decide</div>
   </header>
 
-  <!-- HOME -->
-  <section class="view" id="view-home" aria-label="Início">
-    <div class="choices">
-      <a class="choice primary" href="#roleta">
-        <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path><circle cx="12" cy="12" r="2.2" fill="currentColor"></circle></svg>
-        <span>Girar a roleta<small>Foi pego? Gire e descubra o castigo</small></span>
-      </a>
-      <a class="choice secondary" href="#cardapio">
-        <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F4A3B1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1.4 15.2a1 1 0 0 1-1 .8H9.4a1 1 0 0 1-1-.8z"></path><path d="M7.6 10h8.8"></path></svg>
-        <span>Cardápio de shots<small>Conheça o que te espera</small></span>
-      </a>
-    </div>
-    <p class="rules">Algumas coisas que acontecerem hoje à noite vão te custar caro. Ninguém sabe quais são… até acontecer.</p>
-  </section>
-
-  <!-- CARDÁPIO -->
-  <section class="view" id="view-cardapio" aria-label="Cardápio de shots">
-    <a class="back" href="#">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
-      Voltar
-    </a>
-    <div class="divider"><h2>Cardápio de shots</h2></div>
-    <div class="menu">
-    <div class="level-group">
-      <div class="level-head"><h3 class="level-title">Nível Leve</h3><span class="heat" aria-hidden="true"><i class="on"></i><i></i><i></i></span></div>
-      <div class="shot">
-        <h3>Shot de Batida</h3>
-        <p>Cachaça, morango e leite condensado</p>
-      </div>
-      <div class="shot">
-        <h3>Shot de Martini</h3>
-        <p>Martini rosso puro</p>
-      </div>
-    </div>
-    <div class="level-group">
-      <div class="level-head"><h3 class="level-title">Nível Médio</h3><span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></div>
-      <div class="shot">
-        <h3>Rabo de Galo</h3>
-        <p>Cachaça e Martini rosso</p>
-      </div>
-    </div>
-    <div class="level-group">
-      <div class="level-head"><h3 class="level-title">Nível Máximo</h3><span class="heat" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
-      <div class="shot">
-        <h3>Shot de Cachaça</h3>
-        <p>Cachaça pura</p>
-      </div>
-      <div class="shot">
-        <h3>Shot de Vodka</h3>
-        <p>Vodka pura</p>
-      </div>
-      <div class="shot">
-        <h3>Shot de Uísque</h3>
-        <p>Uísque puro</p>
-      </div>
-      <div class="shot">
-        <h3>Shot de Rum</h3>
-        <p>Rum puro</p>
-      </div>
-    </div>
-    <div class="level-group">
-      <div class="level-head"><h3 class="level-title">Café com Leite</h3></div>
-      <div class="shot">
-        <h3>Shot da Vergonha</h3>
-        <p>Não aguentou? Água tônica pura. E todo mundo vai saber.</p>
-      </div>
-    </div>
-    </div>
-    <a class="choice primary" href="#roleta">
-      <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"></path><circle cx="12" cy="12" r="2.2" fill="currentColor"></circle></svg>
-      <span>Ir para a roleta</span>
-    </a>
-  </section>
-
-  <!-- ROLETA -->
-  <section class="view" id="view-roleta" aria-label="Roleta">
-    <a class="back" href="#">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
-      Voltar
-    </a>
-    <div class="divider"><h2>A roleta</h2></div>
-
+  <section class="view active" id="view-roleta" aria-label="Roleta">
     <div class="wheel-wrap">
       <svg class="pointer" viewBox="0 0 40 48" aria-hidden="true">
-        <path d="M20 46 L4 10 A16 16 0 0 1 36 10 Z" fill="#F4EFE6" stroke="#162C23" stroke-width="2"></path>
-        <circle cx="20" cy="14" r="5" fill="#E07D90"></circle>
+        <path d="M20 46 L4 10 A16 16 0 0 1 36 10 Z" fill="#F4EFE6" stroke="#2A1849" stroke-width="2"></path>
+        <circle cx="20" cy="14" r="5" fill="#A57BE6"></circle>
       </svg>
       <button class="wheel-btn" id="wheelBtn" type="button" aria-label="Girar a roleta">
-        <svg id="wheel" viewBox="0 0 340 340" role="img" aria-label="Roleta com 9 castigos"></svg>
+        <svg id="wheel" viewBox="0 0 340 340" role="img" aria-label="Roleta com 4 fatias"></svg>
       </button>
     </div>
 
@@ -416,34 +335,24 @@
     </div>
   </section>
 
-  <footer>Saúde, Bruna!</footer>
+  <footer>Saúde, Janine!</footer>
 </main>
 
 <script>
-  // ---------- Fatias da roleta (todas com a mesma chance) ----------
+  // Fatias. As marcadas com fake: true aparecem na roleta, mas a roleta nunca para nelas:
+  // quando cai numa delas, para por um instante e depois anda até a fatia seguinte.
   const SLICES = [
-    { short: 'Nível Leve',     title: 'Nível Leve',                desc: 'Escolha um shot do nível leve no cardápio.', menu: true },
-    { short: 'Homens bebem',   title: 'Homens bebem',              desc: 'Todos os homens da mesa tomam um shot.' },
-    { short: 'Livre!',         title: 'Livre!',                    desc: 'Escapou desta vez. Aproveite.' },
-    { short: 'Nível Médio',    title: 'Nível Médio',               desc: 'Escolha um shot do nível médio no cardápio.', menu: true },
-    { short: 'Escolha alguém', title: 'Escolha alguém para beber', desc: 'Aponte quem vai tomar um shot no seu lugar.' },
-    { short: 'Brinde geral',   title: 'Brinde geral',              desc: 'Todo mundo levanta o copo e bebe junto.' },
-    { short: 'Nível Máximo',   title: 'Nível Máximo',              desc: 'Escolha um shot do nível máximo no cardápio. Sem choro.', menu: true },
-    { short: 'Mulheres bebem', title: 'Mulheres bebem',            desc: 'Todas as mulheres da mesa tomam um shot.' },
-    { short: 'Gire de novo',   title: 'Gire de novo',              desc: 'A roleta quer mais. Gire outra vez.' }
+    { short: '1/4 de xote',   title: '1/4 de xote',     desc: 'Janine bebe 1/4 de shot. Saúde!',     fill: '#C9A7F5', text: '#2A1849' },
+    { short: 'Livre!',        title: 'Livre!',          desc: '',                                     fill: '#F4EFE6', text: '#2A1849', fake: true },
+    { short: '1/4 de xote',   title: '1/4 de xote',     desc: 'Janine bebe 1/4 de shot. Saúde!',     fill: '#C9A7F5', text: '#2A1849' },
+    { short: 'Receba R$ 200', title: 'Receba R$ 200!',  desc: '',                                     fill: '#5A3C91', text: '#F4EFE6', fake: true }
   ];
 
   const N = SLICES.length;
   const SEG = 360 / N;
-  const C = 170;         // centro
-  const R = 156;         // raio das fatias
+  const C = 170;
+  const R = 156;
   const NS = 'http://www.w3.org/2000/svg';
-
-  const COLORS = [
-    { fill: '#F4A3B1', text: '#162C23' },
-    { fill: '#2C5442', text: '#F4EFE6' },
-    { fill: '#F4EFE6', text: '#162C23' }
-  ];
 
   function pt(angleFromTop, r) {
     const a = angleFromTop * Math.PI / 180;
@@ -458,66 +367,44 @@
 
   function buildWheel() {
     const svg = document.getElementById('wheel');
+    el('circle', { cx: C, cy: C, r: 168, fill: '#2A1849' }, svg);
+    el('circle', { cx: C, cy: C, r: 163, fill: 'none', stroke: '#C9A7F5', 'stroke-width': 2 }, svg);
 
-    // aro externo
-    el('circle', { cx: C, cy: C, r: 168, fill: '#162C23' }, svg);
-    el('circle', { cx: C, cy: C, r: 163, fill: 'none', stroke: '#F4A3B1', 'stroke-width': 2 }, svg);
-
-    // fatias
     SLICES.forEach((s, i) => {
       const a0 = i * SEG, a1 = (i + 1) * SEG;
       const [x0, y0] = pt(a0, R);
       const [x1, y1] = pt(a1, R);
-      const col = COLORS[i % 3];
       el('path', {
         d: `M${C},${C} L${x0},${y0} A${R},${R} 0 0 1 ${x1},${y1} Z`,
-        fill: col.fill,
-        stroke: '#162C23',
-        'stroke-width': 1.5
+        fill: s.fill, stroke: '#2A1849', 'stroke-width': 1.5
       }, svg);
-
       const mid = a0 + SEG / 2;
       const g = el('g', { transform: `rotate(${mid - 90} ${C} ${C})` }, svg);
       const t = el('text', {
-        x: C + R - 12,
-        y: C,
-        'text-anchor': 'end',
-        'dominant-baseline': 'central',
-        fill: col.text,
+        x: C + R - 14, y: C,
+        'text-anchor': 'end', 'dominant-baseline': 'central',
+        fill: s.text,
         'font-family': 'Karla, system-ui, sans-serif',
-        'font-weight': 700,
-        'font-size': s.short.length >= 14 ? 12.5 : 14
+        'font-weight': 700, 'font-size': s.short.length >= 12 ? 15 : 18
       }, g);
       t.textContent = s.short;
     });
 
-    // lâmpadas no aro
-    for (let i = 0; i < N * 2; i++) {
-      const [bx, by] = pt(i * SEG / 2, 163);
-      el('circle', {
-        cx: bx, cy: by, r: 3.6,
-        fill: i % 2 === 0 ? '#F4EFE6' : '#F4A3B1',
-        class: 'bulb'
-      }, svg);
+    for (let i = 0; i < 24; i++) {
+      const [bx, by] = pt(i * 15, 163);
+      el('circle', { cx: bx, cy: by, r: 3.6, fill: i % 2 === 0 ? '#F4EFE6' : '#C9A7F5' }, svg);
     }
 
-    // miolo
-    el('circle', { cx: C, cy: C, r: 28, fill: '#162C23', stroke: '#F4A3B1', 'stroke-width': 2 }, svg);
+    el('circle', { cx: C, cy: C, r: 28, fill: '#2A1849', stroke: '#C9A7F5', 'stroke-width': 2 }, svg);
     el('circle', { cx: C, cy: C, r: 20, fill: 'none', stroke: '#F4EFE6', 'stroke-width': 1, opacity: 0.4 }, svg);
-    const star = el('text', {
-      x: C, y: C + 1,
-      'text-anchor': 'middle',
-      'dominant-baseline': 'central',
-      fill: '#F4A3B1',
-      'font-family': 'Fraunces, Georgia, serif',
-      'font-style': 'italic',
-      'font-weight': 600,
-      'font-size': 19
+    const j = el('text', {
+      x: C, y: C + 1, 'text-anchor': 'middle', 'dominant-baseline': 'central',
+      fill: '#C9A7F5', 'font-family': 'Fraunces, Georgia, serif',
+      'font-style': 'italic', 'font-weight': 600, 'font-size': 19
     }, svg);
-    star.textContent = 'B';
+    j.textContent = 'J';
   }
 
-  // ---------- giro ----------
   const wheel = document.getElementById('wheel');
   const spinBtn = document.getElementById('spinBtn');
   const wheelBtn = document.getElementById('wheelBtn');
@@ -526,58 +413,62 @@
   let rotation = 0;
   let spinning = false;
 
-  function randomIndex() {
+  function rand() {
     if (window.crypto && crypto.getRandomValues) {
       const buf = new Uint32Array(1);
-      const limit = Math.floor(0xFFFFFFFF / N) * N;
-      do { crypto.getRandomValues(buf); } while (buf[0] >= limit);
-      return buf[0] % N;
+      crypto.getRandomValues(buf);
+      return buf[0] / 4294967296;
     }
-    return Math.floor(Math.random() * N);
+    return Math.random();
   }
 
-  function spin() {
-    if (spinning) return;
-    spinning = true;
-    spinBtn.disabled = true;
-    result.className = 'result idle';
-    result.innerHTML = '<div class="label">Girando…</div><div class="title">Que a sorte esteja com você</div>';
+  // Ângulo da roleta que está sob o ponteiro (0 = topo, sentido horário).
+  function pointerAngle() { return ((360 - (rotation % 360)) % 360 + 360) % 360; }
 
-    const idx = randomIndex();
-    const center = idx * SEG + SEG / 2;
-    const jitter = (Math.random() - 0.5) * (SEG * 0.7);
-    const target = (360 - center + jitter + 360) % 360;
+  // Gira até o ponteiro ficar no ângulo p da roleta.
+  function rotateTo(p, turns, duration, easing) {
+    const target = ((360 - p) % 360 + 360) % 360;
     const current = ((rotation % 360) + 360) % 360;
     let delta = target - current;
     if (delta < 0) delta += 360;
-    const turns = reduceMotion ? 1 : 6;
     rotation += turns * 360 + delta;
-
-    const duration = reduceMotion ? 1200 : 5200;
-    wheel.style.transition = `transform ${duration}ms cubic-bezier(0.12, 0.8, 0.18, 1)`;
+    wheel.style.transition = `transform ${duration}ms ${easing}`;
     wheel.style.transform = `rotate(${rotation}deg)`;
+    return new Promise(r => setTimeout(r, duration + 80));
+  }
+  const wait = ms => new Promise(r => setTimeout(r, ms));
 
-    setTimeout(() => showResult(idx), duration + 80);
+  function setResult(label, title, desc, pop) {
+    result.className = 'result' + (pop ? '' : ' idle');
+    if (pop) { void result.offsetWidth; result.className = 'result pop'; }
+    result.innerHTML = '<div class="label"></div><div class="title"></div>' + (desc ? '<div class="desc"></div>' : '');
+    result.querySelector('.label').textContent = label;
+    result.querySelector('.title').textContent = title;
+    if (desc) result.querySelector('.desc').textContent = desc;
   }
 
-  function showResult(idx) {
-    const s = SLICES[idx];
-    result.className = 'result';
-    void result.offsetWidth;
-    result.className = 'result pop';
-    result.innerHTML =
-      '<div class="label">Resultado</div>' +
-      '<div class="title"></div>' +
-      '<div class="desc"></div>';
-    result.querySelector('.title').textContent = s.title;
-    result.querySelector('.desc').textContent = s.desc;
-    if (s.menu) {
-      const a = document.createElement('a');
-      a.href = '#cardapio';
-      a.className = 'menu-link';
-      a.textContent = 'Abrir o cardápio';
-      result.appendChild(a);
+  async function spin() {
+    if (spinning) return;
+    spinning = true;
+    spinBtn.disabled = true;
+    setResult('Girando…', 'Que a sorte esteja com você', '', false);
+
+    // Todas as fatias parecem ter a mesma chance de parar.
+    let idx = Math.floor(rand() * N);
+    const offset = 0.2 + rand() * 0.6;            // onde, dentro da fatia, a roleta para
+    await rotateTo(idx * SEG + offset * SEG, reduceMotion ? 1 : 6, reduceMotion ? 1200 : 5200, 'cubic-bezier(0.12, 0.8, 0.18, 1)');
+
+    // Caiu numa fatia fake: para, finge que acabou e anda mais um pouco até a próxima.
+    if (SLICES[idx].fake) {
+      await wait(reduceMotion ? 300 : 1100);
+      const next = (idx - 1 + N) % N;              // a fatia seguinte no sentido do giro
+      const into = 0.25 + rand() * 0.3;
+      await rotateTo(next * SEG + (1 - into) * SEG, 0, reduceMotion ? 600 : 1900, 'cubic-bezier(0.3, 0, 0.25, 1)');
+      idx = next;
     }
+
+    const s = SLICES[idx];
+    setResult('Resultado', s.title, s.desc, true);
     if (navigator.vibrate) navigator.vibrate([60, 40, 120]);
     spinning = false;
     spinBtn.disabled = false;
@@ -586,19 +477,7 @@
 
   spinBtn.addEventListener('click', spin);
   wheelBtn.addEventListener('click', spin);
-
-  // ---------- navegação ----------
-  function route() {
-    const h = location.hash.replace('#', '');
-    const name = h === 'roleta' || h === 'cardapio' ? h : 'home';
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById('view-' + name).classList.add('active');
-    window.scrollTo(0, 0);
-  }
-  window.addEventListener('hashchange', route);
-
   buildWheel();
-  route();
 </script>
 </body>
 </html>
