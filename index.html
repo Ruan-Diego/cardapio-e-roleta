@@ -453,8 +453,12 @@
     spinBtn.disabled = true;
     setResult('Girando…', 'Que a sorte esteja com você', '', false);
 
-    // Todas as fatias parecem ter a mesma chance de parar.
-    let idx = Math.floor(rand() * N);
+    // Chances por trás dos panos: 80% de parar direto num 1/4 de xote (uma das duas fatias),
+    // 20% de parar numa fatia fake (Livre! ou R$ 200), que depois anda até o xote seguinte.
+    const real = [], fakes = [];
+    SLICES.forEach((s, i) => (s.fake ? fakes : real).push(i));
+    const pool = rand() < 0.8 ? real : fakes;
+    let idx = pool[Math.floor(rand() * pool.length)];
     const offset = 0.2 + rand() * 0.6;            // onde, dentro da fatia, a roleta para
     await rotateTo(idx * SEG + offset * SEG, reduceMotion ? 1 : 6, reduceMotion ? 1200 : 5200, 'cubic-bezier(0.12, 0.8, 0.18, 1)');
 
